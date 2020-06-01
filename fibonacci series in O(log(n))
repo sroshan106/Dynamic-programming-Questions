@@ -1,0 +1,31 @@
+def mul(p,q):
+    a = p[0][0]*q[0][0]+p[0][1]*q[1][0]
+    b = p[0][0]*q[0][1]+p[0][1]*q[1][1]
+    c = p[1][0]*q[0][0]+p[1][1]*q[0][1]
+    d = p[1][0]*q[0][1]+p[1][1]*q[1][1]
+    p=[[a,b],[c,d]]
+    return p
+
+
+def fibo(n):
+    l=[[1,1],[1,0]]
+    if n==0:
+        return 0
+    temp = compute(l,n-1)
+    return temp[0][0]
+
+def compute(l,n):
+    if n==0 or n==1:
+        return l
+    temp = compute(l,n//2)
+    temp = mul(temp,temp)
+    if n%2==1:
+        temp= mul(l,temp)
+    return temp
+
+
+
+
+
+n = int(input())
+print(fibo(n))
