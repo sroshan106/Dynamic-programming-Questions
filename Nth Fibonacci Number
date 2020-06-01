@@ -1,0 +1,14 @@
+def fibo(n,d):
+    if n==1 or n==0:
+        return 1
+    if n in d:
+        return d[n]
+    result = fibo(n-1,d)+fibo(n-2,d)
+    if n not in d:
+        d[n]=result
+    return result
+    
+d={}
+n = int(input())
+result = fibo(n-1,d)
+print(result)
